@@ -1,5 +1,21 @@
 # {{cookiecutter.project_name}}
 
+## Here's my modifications for a majorly local setup:
+
+*NOTE: I'm not using celery, redis and emails, so you might need to do additional stuff for that.*
+
+*NOTE: This is updated for python3.11*
+
+* Setup postgres using docker or local install
+* Update ENV to use correct postgres creds
+* Go into `backend/app`
+* Use poetry to create env and install dependencies
+* Run `dotenv -f ../../.env run python app/backend_pre_start.py`
+* If connection is successful, then run `dotenv -f ../../.env alembic upgrade head`
+* Now run `dotenv -f ../../.env app/initial_data.py`
+* Finally use `dotenv -f ../../.env uvicorn app.main:app --reload` to run backend
+* For frontend, `npm install` and then `npm serve` I think.
+
 ## Backend Requirements
 
 * [Docker](https://www.docker.com/).
